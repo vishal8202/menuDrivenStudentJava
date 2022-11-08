@@ -106,41 +106,15 @@ public class Main {
                     break;
                 case 4:
                     System.out.println("Update student");
-                    System.out.println("Enter the admission number : ");
-                    String admi = input.next();
-                    System.out.println("Enter name to update: ");
-                    name = input.next();
-                    System.out.println("Enter the rollnumber to update: ");
-                    rollno = input.nextInt();
-                    System.out.println("Enter the collegename to update: ");
-                    college = input.next();
-
-
-
-
-                    try {
-                        Class.forName("com.mysql.jdbc.Driver");
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdb", "root", "");
-                        String sql = "UPDATE `students` SET `name`='"+name+"',`rollnumber`='"+rollno+"',`college`='"+college+"' WHERE `admno`=" + admi;
-                        Statement stmt = con.createStatement();
-                        stmt.executeUpdate(sql);
-                        System.out.println("Data updated successfully.");
-
-                    }
-                    catch (Exception e){
-                        System.out.println(e);
-                    }
-
-
                     break;
                 case 5:
                     System.out.println("Delete student");
                     System.out.println("Enter the admission number : ");
-                    String admo = input.next();
+                    String adm = input.next();
                     try {
                         Class.forName("com.mysql.jdbc.Driver");
                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdb","root","");
-                        String sql = "DELETE FROM `students` WHERE `admno`= " +admo;
+                        String sql = "DELETE FROM `students` WHERE `admno`= " +adm;
                         Statement stmt = con.createStatement();
                         stmt.executeUpdate(sql);
                         System.out.println("data deleted successfully");
