@@ -78,6 +78,31 @@ public class Main {
                     break;
                 case 3:
                     System.out.println("Search student");
+                    System.out.println("Enter the admission number : ");
+                    admnum = input.nextInt();
+                    try {
+                        Class.forName("com.mysql.jdbc.Driver");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdb","root","");
+                        String sql = "SELECT `name`, `rollnumber`, `admno`, `college` FROM `students` WHERE `admno`="+String.valueOf(admnum);
+                        Statement stmt = con.createStatement();
+                        ResultSet rs = stmt.executeQuery(sql);
+                        while (rs.next()){
+
+                            String getName = rs.getString("name");
+                            String getRollno = rs.getString("rollnumber");
+                            String getAdmno = rs.getString("admno");
+                            String getCollege = rs.getString("college");
+                            System.out.println("Name="+getName);
+                            System.out.println("Rollno="+getRollno);
+                            System.out.println("Admno="+getAdmno);
+                            System.out.println("college="+getCollege+"\n");
+                        }
+                    }
+                    catch (Exception e ){
+                        System.out.println(e);
+                    }
+
+
                     break;
                 case 4:
                     System.out.println("Update student");
